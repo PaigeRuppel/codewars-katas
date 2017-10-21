@@ -38,6 +38,11 @@ public class SkyScraperTest {
 		onePositions.add(8); 
 		onePositions.add(14);
 		assertThat(underTest.locateAllOnes(clues1), is(onePositions));
-		
+	}
+	
+	@Test
+	public void allOnePositionsShouldBePopulatedWithFoursFromClues1() {
+		int[][] withFours = {{0,0,4,0},{4,0,0,0},{0,0,0,0},{0,0,0,4}};
+		assertThat(underTest.buildAllFours(clues1), is(withFours));
 	}
 }
