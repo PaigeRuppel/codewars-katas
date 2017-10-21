@@ -33,31 +33,33 @@ public class SkyScraperFourByFour {
 		return withFours;
 	}
 
+	//TODO Refactor this monstrous method
 	public int[][] fillInFourthInstanceOfNumber(int[][] incompleteGrid, int numberOfInterest) {
-		List<Integer> possibleRows = new ArrayList<>();
-		possibleRows.add(0);
-		possibleRows.add(1);
-		possibleRows.add(2);
-		possibleRows.add(3);
-		List<Integer> possibleCols = new ArrayList<>();
-		possibleCols.add(0);
-		possibleCols.add(1);
-		possibleCols.add(2);
-		possibleCols.add(3);
-		
-		while (possibleRows.size() > 1 && possibleCols.size() > 1) {
+		List<Integer> filledRows = new ArrayList<>();
+		List<Integer> filledCols = new ArrayList<>();
+		while (filledRows.size() < 3 && filledCols.size() < 3) {
 			for (int row = 0; row < incompleteGrid.length; row++) {
 				for (int col = 0; col < incompleteGrid[0].length; col++) {
 					if (incompleteGrid[row][col] == numberOfInterest) {
-						possibleRows.remove(possibleRows.indexOf(row));
-						possibleCols.remove(possibleCols.indexOf(col));
+						filledRows.add(row);
+						filledCols.add(col);
 					}
 				}
 			}
 		}
 		
-		int remainingRow = possibleRows.get(0);
-		int remainingCol = possibleCols.get(0);
+		int remainingRow = 0;
+		int remainingCol = 0;
+		
+		for (int i = 1; i < 4; i++) {
+			if (!filledRows.contains(i)) {
+				remainingRow = i;
+			}
+			if (!filledCols.contains(i)) {
+				remainingCol = i;
+			}
+		}
+		
 		incompleteGrid[remainingRow][remainingCol] = numberOfInterest;
 		return incompleteGrid;
 	}
