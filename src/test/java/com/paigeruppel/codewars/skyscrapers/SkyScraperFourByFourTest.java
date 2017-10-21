@@ -9,9 +9,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SkyScraperTest {
+public class SkyScraperFourByFourTest {
 
-	private SkyScraper underTest;
+	private SkyScraperFourByFour underTest;
 	private int[] clues1 = { 2, 2, 1, 3, 2, 2, 3, 1, 1, 2, 2, 3, 3, 2, 1, 3 };
 	
 	/*
@@ -26,7 +26,7 @@ public class SkyScraperTest {
 	
 	@Before
 	public void setup() {
-		underTest = new SkyScraper();
+		underTest = new SkyScraperFourByFour();
 	}
 	
 
