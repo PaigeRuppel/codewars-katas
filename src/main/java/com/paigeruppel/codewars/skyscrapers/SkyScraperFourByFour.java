@@ -42,25 +42,20 @@ public class SkyScraperFourByFour {
 				}
 			}
 		}
-		int remainingRow = calculateRemainingPosition(rowCount);
-		int remainingCol = calculateRemainingPosition(colCount);
+		int remainingRow = guide.findRemainingPosition(rowCount);
+		int remainingCol = guide.findRemainingPosition(colCount);
 		incompleteGrid[remainingRow][remainingCol] = numberOfInterest;
 		return incompleteGrid;
 	}
-	
-	private int calculateRemainingPosition(int count) {
-		int remaining = 0;
-		
-		if (count == 3) {
-			remaining = 3;
+
+	public int[][] fillInKnownThrees(int[] clues, int[][] incompleteGrid) {
+		for (int i = 0; i < clues.length; i++) {
+			if (clues[i] == 2 && clues[guide.findPair(i)] == 1) {
+				Integer[] coords = guide.convertClockPositionToRowAndCol(i);
+				incompleteGrid[coords[0]][coords[1]] = 3;
 			}
-		if (count == 4) {
-			remaining = 2;
 		}
-		if (count == 5) {
-			remaining = 1;
-		}
-		return remaining;
+		return incompleteGrid;
 	}
 
 }

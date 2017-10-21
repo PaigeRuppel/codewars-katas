@@ -58,4 +58,18 @@ public class SkyScraperFourByFourTest {
 								{0,0,0,4}};
 		assertThat(underTest.fillInFourthInstanceOfNumber(withFours, 4), is(withAllFours));
 	}
+	
+	@Test
+	public void shouldFillIn3sAtPositionsWhereClueIs2AndPairIs1FromClues1() {
+		int[][] withAllFours = {{0,0,4,0},
+								{4,0,0,0},
+								{0,4,0,0},
+								{0,0,0,4}};
+		int[][] withThreesAndFours = {{0,0,4,0},
+									  {4,0,0,3},
+									  {0,4,0,0},
+									  {0,0,3,4}};
+		
+		assertThat(underTest.fillInKnownThrees(clues1, withAllFours), is(withThreesAndFours));
+	}
 }
