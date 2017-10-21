@@ -42,7 +42,20 @@ public class SkyScraperFourByFourTest {
 	
 	@Test
 	public void allOnePositionsShouldBePopulatedWithFoursFromClues1() {
-		int[][] withFours = {{0,0,4,0},{4,0,0,0},{0,0,0,0},{0,0,0,4}};
+		int[][] withFours = {{0,0,4,0},
+							{4,0,0,0},
+							{0,0,0,0},
+							{0,0,0,4}};
 		assertThat(underTest.buildAllFours(clues1), is(withFours));
+	}
+	
+	@Test
+	public void shouldFillInFinalFourWhenThreeAreAlreadyOnGrid() {
+		int[][] withFours = underTest.buildAllFours(clues1);
+		int[][] withAllFours = {{0,0,4,0},
+								{4,0,0,0},
+								{0,4,0,0},
+								{0,0,0,4}};
+		assertThat(underTest.fillInFourthInstanceOfNumber(withFours, 4), is(withAllFours));
 	}
 }

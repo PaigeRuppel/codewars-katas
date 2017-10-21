@@ -30,8 +30,36 @@ public class SkyScraperFourByFour {
 			Integer[] coords = guide.convertClockPositionToRowAndCol(clockPosition);
 			withFours[coords[0]][coords[1]] = 4;
 		}
-
 		return withFours;
+	}
+
+	public int[][] fillInFourthInstanceOfNumber(int[][] incompleteGrid, int numberOfInterest) {
+		List<Integer> possibleRows = new ArrayList<>();
+		possibleRows.add(0);
+		possibleRows.add(1);
+		possibleRows.add(2);
+		possibleRows.add(3);
+		List<Integer> possibleCols = new ArrayList<>();
+		possibleCols.add(0);
+		possibleCols.add(1);
+		possibleCols.add(2);
+		possibleCols.add(3);
+		
+		while (possibleRows.size() > 1 && possibleCols.size() > 1) {
+			for (int row = 0; row < incompleteGrid.length; row++) {
+				for (int col = 0; col < incompleteGrid[0].length; col++) {
+					if (incompleteGrid[row][col] == numberOfInterest) {
+						possibleRows.remove(possibleRows.indexOf(row));
+						possibleCols.remove(possibleCols.indexOf(col));
+					}
+				}
+			}
+		}
+		
+		int remainingRow = possibleRows.get(0);
+		int remainingCol = possibleCols.get(0);
+		incompleteGrid[remainingRow][remainingCol] = numberOfInterest;
+		return incompleteGrid;
 	}
 
 }
