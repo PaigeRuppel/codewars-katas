@@ -3,8 +3,8 @@ package com.paigeruppel.codewars.skyscrapers;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class SkyScraperTest {
 
 	@Test
 	public void shouldReturnAllPositionsWith1FromClues1() {
-		Set<Integer> onePositions = new HashSet<>();
+		List<Integer> onePositions = new ArrayList<>();
 		onePositions.add(2);
 		onePositions.add(7);
 		onePositions.add(8); 
