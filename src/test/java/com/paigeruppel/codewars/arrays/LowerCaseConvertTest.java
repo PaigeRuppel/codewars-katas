@@ -21,4 +21,18 @@ public class LowerCaseConvertTest {
 		Object[] lowerCase = {"red", "green"};
 		assertThat(underTest.convertToLowerCase(items), is(lowerCase));
 	}
+
+	@Test
+	public void shouldReturnRedAndGreenToLowerButLeaveIntsUnchanged() {
+		Object[] items = {"Red", "Green", 1, 2};
+		Object[] lowerCase = {"red", "green", 1, 2};
+		assertThat(underTest.convertToLowerCase(items), is(lowerCase));
+	}
+	
+	@Test
+	public void shouldReturnIntsUnchanged() {
+		Object[] items = {1, 2, 3, 4};
+		Object[] lowerCase = {1, 2, 3, 4};
+		assertThat(underTest.convertToLowerCase(items), is(lowerCase));
+	}
 }
