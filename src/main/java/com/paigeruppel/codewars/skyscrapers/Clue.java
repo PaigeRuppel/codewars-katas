@@ -2,7 +2,7 @@ package com.paigeruppel.codewars.skyscrapers;
 
 public class Clue {
 	//create a clue object for each clue we receive
-	private int clueType;
+	private ClueValue clueValue;
 	private int clockPosition;
 	private Integer[] correspondingRowAndCol;
 	
@@ -13,14 +13,9 @@ public class Clue {
 	}
 
 	//constructor that accepts clue type (int) clue position (clock) and from that builds certain guidelines
-	public Clue(int clueType, int clockPosition) {
-		this.clueType = clueType;
+	public Clue(ClueValue clueValue, int clockPosition) {
+		this.clueValue = clueValue;
 		this.clockPosition = clockPosition;
 		correspondingRowAndCol = guide.convertClockPositionToRowAndCol(clockPosition);
 	}
-
-	
-	
-	
-	
 }
